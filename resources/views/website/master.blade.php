@@ -414,8 +414,8 @@
                     <div class="widget">
                         <h6 class="widget_title">Category</h6>
                         <ul class="widget_links">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Woman</a></li>
+                            <li><a href="#" >Men</a></li>
+                            <li><a href="#" >Woman</a></li>
                             <li><a href="#">Kids</a></li>
                             <li><a href="#">Best Saller</a></li>
                             <li><a href="#">New Arrivals</a></li>
@@ -482,15 +482,15 @@
         <div class="modal-content">
             <div class="modal-header"><h3>Login</h3></div>
             <div class="modal-body">
-                <form action="{{ route('customer.login') }}" method="POST">
+                <form action="{{ route('customer.login') }}" method="POST" id="loginForm">
                     @csrf
                     <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Your Email">
-                        <span class="text-danger">{{ session('email') }}</span>
+                        <input type="email" id="loginEmail" class="form-control" name="email" placeholder="Your Email">
+                        <span class="text-danger" id="loginEmailErrors"></span>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="password" name="password" placeholder="Password">
-                        <span class="text-danger">{{ session('password') }}</span>
+                        <input class="form-control" type="password" name="password" id="loginPassword" placeholder="Password">
+                        <span class="text-danger" id="loginPasswordErrors"></span>
                     </div>
                     <div class="login_footer form-group">
                         <div class="chek-form">
@@ -502,7 +502,7 @@
                         <a href="#">Forgot password?</a>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-fill-out btn-block">Log in</button>
+                        <button type="submit" class="btn btn-fill-out btn-block" id="loginBtn">Log in</button>
                     </div>
                 </form>
                 <div class="different_login">
@@ -523,33 +523,35 @@
         <div class="modal-content">
             <div class="modal-header"> <h3>Create an Account</h3></div>
             <div class="modal-body">
-                <form action="{{ route('register') }}" method="POST">
+                <form action="{{ route('register') }}" method="POST" id="resForm">
                     @csrf
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Full Name *"/>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Full Name *"/>
+                        <span class="text-danger" id="nameErrors"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Your Email *"/>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Your Email *"/>
+                        <span class="text-danger" id="emailErrors"></span>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="password" name="password" placeholder="Password *"/>
+                        <input class="form-control" type="password" name="password" id="password" placeholder="Password *"/>
+                        <span class="text-danger" id="passwordErrors"></span>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="password" placeholder="Confirm Password *"/>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" name="mobile" placeholder="Mobile *"/>
+                        <input class="form-control" type="text" name="phone" id="mobile" placeholder="Mobile *"/>
+                        <span class="text-danger" id="mobileErrors"></span>
                     </div>
                     <div class="login_footer form-group">
                         <div class="chek-form">
                             <div class="custome-checkbox">
-                                <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
+                                <input class="form-check-input checkbox" type="checkbox" id="exampleCheckbox2" name="checkbox"  />
                                 <label class="form-check-label" for="exampleCheckbox2"><span>I agree to terms &amp; Policy.</span></label>
                             </div>
+                            <span class="text-danger" id="checkboxErrors"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-fill-out btn-block" >Register</button>
+                        <button type="submit" class="btn btn-fill-out btn-block" id="regBtn">Register</button>
                     </div>
                 </form>
                 <div class="different_login">
@@ -595,6 +597,7 @@
     <script src="{{asset('/')}}website/assets/js/jquery.elevatezoom.js"></script>
     <!-- scripts js -->
     <script src="{{asset('/')}}website/assets/js/scripts.js"></script>
+    <script src="{{asset('/')}}website/assets/js/form-validation.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @if(Session::has('message'))
         <script>

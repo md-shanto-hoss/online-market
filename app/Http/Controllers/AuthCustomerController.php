@@ -23,18 +23,12 @@ class AuthCustomerController extends Controller
     }
     public function registration(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required|min:8|max:16',
-            'mobile' => 'required'
-        ]);
 
         $this->customer = new Customer();
         $this->customer->name = $request->name;
         $this->customer->email = $request->email;
         $this->customer->password = bcrypt($request->password);
-        $this->customer->mobile = $request->mobile;
+        $this->customer->phone = $request->phone;
         $this->customer->save();
 
         $data = [

@@ -19,7 +19,10 @@ use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\AjaxController;
 
+
+Route::get('/register-email-check', [AjaxController::class, 'index']);
 
 Route::get('/', [ShopWiseController::class, 'index'])->name('home');
 Route::get('/detail/{id}', [ShopWiseController::class, 'detail'])->name('detail');
