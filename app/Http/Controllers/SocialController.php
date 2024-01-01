@@ -24,18 +24,16 @@ class SocialController extends Controller
             $this->newUser->name = $user->name;
             $this->newUser->email = $user->email;
             $this->newUser->image = $user->avatar;
-            $this->newUser->password = bcrypt(rand(8, 20));
-            $this->newUser->mobile = rand(0,11);
             $this->newUser->save();
 
             Session::put('customer_id', $this->newUser->id);
             Session::put('customer_name', $this->newUser->name);
 
-            return redirect('/');
+            return redirect('/')->with('message', 'Register successful and logging successful.');
         }else{
            Session::put('customer_id', $this->customer->id);
            Session::put('customer_name', $this->customer->name);
-           return redirect('/');
+           return redirect('/')->with('message', 'login successful');
         }
     }
 }

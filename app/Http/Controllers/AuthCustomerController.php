@@ -51,7 +51,7 @@ class AuthCustomerController extends Controller
             {
                 Session::put('customer_id', $this->customer->id);
                 Session::put('customer_name', $this->customer->name);
-                return redirect('/');
+                return redirect('/')->with('message', 'Login successful');
             }
             else{
                 return back()->with('password', 'Wrong password.');

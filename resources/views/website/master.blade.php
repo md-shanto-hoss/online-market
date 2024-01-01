@@ -559,7 +559,7 @@
                 </div>
                 <ul class="btn-login list_none text-center">
                     <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
-                    <li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
+                    <li><a href="{{ route('google.redirect') }}" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
                 </ul>
                 <div class="form-note text-center">Already have an account? <a href="#loginModal" data-toggle="modal">Log in</a></div>
                 </h4>
