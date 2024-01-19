@@ -137,7 +137,8 @@
                                                     <ul class="list_none pr_action_btn">
                                                         <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                         <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                        <li><a href="{{ route('wishlist.create', ['id' => $product->id]) }}"><i class="icon-heart"></i></a></li>
+                                                        <li><a href="{{ Session::has('customer_id') ? route('wishlist.create', ['id' => $product->id]) : '#loginModal' }}"
+                                                               data-toggle="{{ Session::has('customer_id') ? '' : 'modal' }}" ><i class="icon-heart"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
